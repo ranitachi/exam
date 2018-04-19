@@ -6734,3 +6734,9 @@ button.close {
     display: none !important;
   }
 }
+
+
+.align-top
+{
+  vertical-align: top !important;
+}

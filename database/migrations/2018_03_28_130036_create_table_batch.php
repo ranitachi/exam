@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateJenisDokumenTable extends Migration
+class CreateTableBatch extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,13 @@ class CreateJenisDokumenTable extends Migration
      */
     public function up()
     {
-        Schema::create('jenis_dokumen', function (Blueprint $table) {
+        Schema::create('batch', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nama_dokumen')->nullable();
-            $table->string('keterangan')->nullable();
+            $table->string('code')->default(-1);
+            $table->integer('year')->default(1);
+            $table->integer('active')->default(1);
+            $table->integer('max_capacity')->default(0);
+            $table->integer('current_capacity')->default(0);
             $table->timestamps();
             $table->softdeletes();
         });
@@ -29,6 +32,6 @@ class CreateJenisDokumenTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('jenis_dokumen');
+        Schema::dropIfExists('batch');
     }
 }
